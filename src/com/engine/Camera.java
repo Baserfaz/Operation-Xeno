@@ -8,20 +8,26 @@ import java.awt.Rectangle;
 
 public class Camera {
 
+    private float cameraPanSpeed = 0.2f;
+    
     private Rectangle cameraBounds;
+    private Point target = new Point();
     
     public Camera() {
         this.cameraBounds = new Rectangle(0, 0, Game.CAMERA_WIDTH, Game.CAMERA_HEIGHT);
     }
 
     public void tick() {
-            
+        
         // current position
-        int camX = this.getCameraBounds().x;
-        int camY = this.getCameraBounds().y;
+        int camX = (this.cameraBounds.x + this.cameraBounds.width) / 2;
+        int camY = (this.cameraBounds.y + this.cameraBounds.height) / 2;
       
+        Point mPos = Util.calculateCameraPos(Game.instance.getMousePos());
+        
         // new position
-        Point target = Util.calculateCameraPos(Game.instance.getMousePos());
+        target.x += mPos.x * this.cameraPanSpeed;
+        target.y += mPos.y * this.cameraPanSpeed;
         
         // apply camera smoothing
         camX -= (target.x + camX) * Game.CAMERA_SMOOTH_MULT;
@@ -35,8 +41,6 @@ public class Camera {
         int y = (int) (this.cameraBounds.y + (Mathf.randomRange(-1, 1) * ymax));
         this.Update(x, y);
     }
-    
-    // ------ GETTERS & SETTERS -------
    
     public void Update(Point pos, int width, int height) { 
         cameraBounds.setBounds(pos.x, pos.y, width, height); 
@@ -44,6 +48,8 @@ public class Camera {
     public void Update(int x, int y) {
         cameraBounds.setBounds(x, y, Game.CAMERA_WIDTH, Game.CAMERA_HEIGHT);
     }
+    
+    // ------ GETTERS & SETTERS -------
     
     public Rectangle getCameraBounds() { return cameraBounds; }
     public Point getCameraCenterPosition() { return new Point(this.cameraBounds.x + this.cameraBounds.width / 2,

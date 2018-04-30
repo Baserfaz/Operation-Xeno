@@ -11,6 +11,7 @@ import com.enumerations.SpriteType;
 public abstract class GameObject {
 
     protected Point worldPosition;
+    
     protected BufferedImage defaultStaticSprite;
     
     protected Rectangle hitbox;
@@ -24,7 +25,7 @@ public abstract class GameObject {
         // set world position
         this.worldPosition = worldPos;
         
-        // create sprite
+        // create sprites
         this.defaultStaticSprite = Game.instance.getSpriteStorage().getSprite(type);
         
         // add to handler

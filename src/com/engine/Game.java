@@ -45,14 +45,14 @@ public class Game extends Canvas implements Runnable {
     public static final String CUSTOMFONTFOLDER    = "coders_crux";     
     
     public static final int SPRITEGRIDSIZE         = 32;
-    public static final int SPRITESIZEMULT         = 2;
+    public static final int SPRITESIZEMULT         = 1;
     
     public static final int TEXT_LINEHEIGHT		   = 2;		
     
     // ------------------------------
     // GAMEPLAY
     
-    public static final int MAXSQUADSIZE              = 4;
+    public static final int MAXSQUADSIZE           = 4;
     
     
     // ------------------------------

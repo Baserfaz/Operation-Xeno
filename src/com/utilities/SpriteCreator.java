@@ -322,6 +322,16 @@ public class SpriteCreator {
                 pos.y = 0;
                 break;
                 
+            case WALL_NW:
+                pos.x = 0;
+                pos.y = 1;
+                break;
+                
+            case WALL_NE:
+                pos.x = 0;
+                pos.y = 2;
+                break;
+                
             default:
                 System.out.println("Could not find a sprite of spritetype:" + type);
                 break;

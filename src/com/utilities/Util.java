@@ -19,6 +19,7 @@ public class Util {
     // ------------------------ RANDOMIZATION -------------------------
 
     public static Direction GetRandomCardinalDirection() { return Direction.values()[Util.GetRandomInteger(0, 4)]; }
+    public static Direction GetRandomOrdinalDirection() { return Direction.values()[Util.GetRandomInteger(4, 8)]; }
     public static int GetRandomInteger() { return ThreadLocalRandom.current().nextInt(0, 101); }
     public static int GetRandomInteger(int min, int max) { return ThreadLocalRandom.current().nextInt(min, max); }
 
@@ -69,6 +70,9 @@ public class Util {
 
     public static Point calculateCameraPos(Point target) {
 
+        // returns a position of the target, which is centered 
+        // to the camera view.
+        
         int spriteSize = Game.SPRITEGRIDSIZE * Game.SPRITESIZEMULT;
 
         int x = 0, y = 0;
